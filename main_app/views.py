@@ -31,37 +31,16 @@ def events_index(request):
 
 def category_index(request, event_category):
     events = Event.objects.filter(category=event_category)
-    return render(request, 'events/index.html', {'events': events, 'category': event_category})
+    return render(request, 'events/index.html', {'events': events})
 
 def events_detail(request, event_id):
     event = Event.objects.get(id=event_id)
     # Instantiate FeedingForm to be rendered in the template
-    print(event.id)
     post_form = PostForm()
     return render(request, 'events/detail.html', {
         # Pass the cat and feeding_form as context
         'event': event,
     })
-
-def events_rsvp(request, event_id):
-    event = Event.objects.filter(id=event_id)
-    print('event  : ', event.values())
-    event.values().user = request.user
-    print("event after update: ", event.values())
-    return redirect('/')
-    # return render(request, 'events/detail.html', {
-    #     # Pass the cat and feeding_form as context
-    #     'event': event,
-    # })
-
-def events_comment(request, event_id):
-    event = Event.objects.get(id=event_id)
-    comment_text = request.POST.__getitem__('comment')
-    user = request.user
-    new_comment = Comment(event=event, user=user, text=comment_text)
-    new_comment.save()
-    return redirect('events_detail', event_id=event_id)
-
 
 def upload_photo(request, event_id):
     event = Event.objects.get(id=event_id)

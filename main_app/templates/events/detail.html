@@ -40,46 +40,33 @@
             <p>Time: {{ event.time }}</p>
             <p>Location: {{ event.location }}</p>
 
-        <p><a href="#">{{ event.info }}</a></p>
-        {% if request.user == event.user %}
-        <div class="card-action">
-            <a href="{% url 'events_update' event.id %}"><button class="btn-floating btn-large waves-effect waves-light blue left hoverable"><i class="material-icons">edit</i></button></a>
-            <a href="{% url 'events_delete' event.id %}"><button class="btn-floating btn-large waves-effect waves-light red right hoverable"><i class="material-icons">delete</i></button></a>
+            <p><a href="#">{{ event.info }}</a></p>
+            {% if request.user == event.user %}
+            <div class="card-action">
+                <a href="{% url 'events_update' event.id %}"><button
+                        class="btn-floating btn-large waves-effect waves-light blue left hoverable"><i
+                            class="material-icons">edit</i></button></a>
+                <a href="{% url 'events_delete' event.id %}"><button
+                        class="btn-floating btn-large waves-effect waves-light red right hoverable"><i
+                            class="material-icons">delete</i></button></a>
+            </div>
+            {% else %}
+            {% endif %}
         </div>
-        {% else %}
-        {% endif %}
+        <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">{{ event.title }}<i
+                    class="material-icons right">close</i></span>
+            <p>{{ event.description }}</p>
+        </div>
+
     </div>
     <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">{{ event.title }}<i class="material-icons right">close</i></span>
+        <span class="card-title grey-text text-darken-4">{{ event.title }}<i
+                class="material-icons right">close</i></span>
         <p>{{ event.description }}</p>
     </div>
-
-    </div>
 </div>
-<tbody>
-    {% for comment in event.comments.all %}
-    <div>
-        <tr>
-            <td>{{ comment.text }}</td>
-            <td>{{ comment.user }}</td>
-            <td>{{ comment.created_date }}</td>
-        </tr>
-    </div>
-    {% endfor %}
-</tbody>
-
-<form action="{% url 'events_rsvp' event.id %}" method="post">
-    {%csrf_token%}
-    <button type="submit" value="RSVP">RSVP</button>
-</form>
-
-
-<form action="{% url 'events_comment' event.id %}" method="post">
-    {%csrf_token%}
-    <textarea type='textarea' name="comment"></textarea>
-    <button type="submit" value="event comment">Comment</button>
-</form>
-
+</div>
 
 
 {% endblock %}

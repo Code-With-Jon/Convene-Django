@@ -3,7 +3,6 @@ from django.urls import reverse
 from django.contrib.postgres.fields import ArrayField
 from django.contrib.auth.models import User
 from django.utils import timezone
-
 # Create your models here.
 
 # class Category:
@@ -18,6 +17,8 @@ CATEGORIES = (
     ('education', 'Education'),
     ('health', 'Health'),
 )
+
+
 
 
 class Event(models.Model):
@@ -40,7 +41,6 @@ class Event(models.Model):
 
     def get_absolute_url(self):
         return reverse('upload_photo', kwargs={'event_id': self.id})
-
 
 class Photo(models.Model):
     url = models.CharField(max_length=200)
