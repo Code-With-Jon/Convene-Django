@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'convene.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'convenedb',
+        'NAME': 'convenedb2',
     }
 }
 
