@@ -35,7 +35,7 @@ class Event(models.Model):
     )
 
     users = models.ManyToManyField(User)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
     def get_absolute_url(self):
@@ -48,11 +48,6 @@ class Photo(models.Model):
 
     def __str__(self):
         return f"Photo for event_id: {self.event_id} @{self.url}"
-
-class Comment(models.Model):
-    date = models.DateField('comment date')
-    content = models.TextField(max_length=2000)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 class Comment(models.Model):
