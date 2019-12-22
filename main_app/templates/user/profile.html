@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="row">
-    <div id=""class="col s12">
+    <div id="" class="col s12">
         <ul id="profhead">
             <li class="col s2"> Full name: {{ user.get_full_name }} </li>
             <li class="col s2"> @{{ user.username }} </li>
@@ -36,61 +36,6 @@
         </table>
     </div>
 </div>
-
-
-
-<!-- 
-<div class="row">
-
-    <div id="profile" class="right-align col 12">
-        <div>
-        <header>
-            <div class="avatarcontainer">
-                <img src="http://www.croop.cl/UI/twitter/images/carl.jpg" alt="avatar" class="avatar">
-                <div class="hover">
-                    <div class="icon-twitter"></div>
-                </div>
-            </div>
-            <div class="bio">
-                <div class="desc">
-                    <h6>@{{ user.username }}</h6>
-                    <h6>Id: {{ user.id }}</h6>
-                </div>
-            </div>
-        </header>
-        <div class="content">
-            <div class="data">
-                <ul>
-                    <li>
-                        <span>Full name: {{ user.get_full_name }}</span>
-                    </li>
-                    <li>
-                        <span>Email: {{ user.email }}</span>
-                    </li>
-                    <li>
-                        <span>Group: {{ user.groups.all.0 }}</span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="follow">
-                <div></div> Follow
-            </div>
-        </div>
-
-    </div>
-</div>
-
-    <div class="col s6">
-     <h3>Events</h3>
-    </div>
-    <div class="col s6">
-        <h3> Created</h3>
-    </div>
-
-
-  </div> -->
-
 
 <h3>Session Started at: {{ user.last_login }}</h3>
 {% endblock %}

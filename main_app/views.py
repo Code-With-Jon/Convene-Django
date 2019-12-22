@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import PostForm
-from .models import Event, Photo, Comment
+from .models import Event, Photo
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 
@@ -37,6 +37,13 @@ def events_detail(request, event_id):
     post_form = PostForm()
     return render(request, 'events/detail.html', {
         # Pass the cat and feeding_form as context
+        'event': event,
+    })
+
+def upload_photo(request, event_id):
+    event = Event.objects.get(id=event_id)
+    return render(request, 'main_app/event_upload_photo.html', {
+        # Pass the cat and feeding_form as context
         'event': event
     })
 
@@ -46,9 +53,14 @@ def landing(request):
 
 
 def user(request):
+<<<<<<< HEAD
 
     events = Event.objects.all()
     return render(request, 'user/profile.html', {'contact_name': request.user.first_name, 'events': events})
+=======
+    
+    return render(request, 'user/profile.html', {'contact_name': request.user.first_name})
+>>>>>>> parent of 056832f... fix comments showing on detail view, and passing events to profile screen
 
 
 def events(request):
